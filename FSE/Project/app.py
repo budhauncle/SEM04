@@ -1,3 +1,26 @@
+"""
+===============================================================================
+File: app.py
+Purpose: 
+    Main entry point and application factory for the Flask backend. It 
+    initializes the core server, wires up extensions, and registers API routes.
+
+Key Responsibilities:
+    - App Initialization: Uses the factory pattern (`create_app()`) to construct 
+      the Flask instance using settings from `config.Config`.
+    - Extensions Setup: Initializes SQLAlchemy (`db`) for the database, 
+      Flask-JWT-Extended (`jwt`) for auth, and configures CORS for API access.
+    - Routing (Blueprints): Registers modular routes for the application's core 
+      features (auth, courses, lessons, summaries, progress, quizzes, materials, 
+      and enrollments).
+    - Error Handling: Implements custom JSON responses for JWT authentication 
+      failures (missing, invalid, expired tokens) and standard HTTP errors (404, 405).
+    - Database Provisioning: Automatically creates all database tables inside 
+      the app context on startup if they don't already exist.
+===============================================================================
+"""
+
+
 from flask import Flask, jsonify
 from flask_cors import CORS
 
